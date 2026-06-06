@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon"
+href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<circle cx='50' cy='50' r='45' fill='%23FFF5F7'/>
+<text x='50' y='62'
+text-anchor='middle'
+font-size='42'>🌸</text>
+<text x='75' y='35'
+font-size='22'
+font-family='Arial'
+font-weight='bold'
+fill='%23FF8FAB'>E</text>
+</svg>">
+<title>The Story We Shared</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background:#FFF5F7;
+    color:#4A4A4A;
+    overflow-x:hidden;
+}
+
+/* Floating Hearts */
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.heart{
+    position:absolute;
+    color:#ffb6c1;
+    animation:float 12s linear infinite;
+    opacity:.25;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-120px);
+    }
+}
+
+/* Navbar */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:999;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.logo{
+    font-weight:bold;
+    color:#FF8FAB;
+    font-size:20px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:20px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#555;
+    font-weight:600;
+}
+
+/* Hero */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:3rem;
+    color:#FF8FAB;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    background:#FF8FAB;
+    color:white;
+    text-decoration:none;
+    padding:14px 28px;
+    border-radius:50px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+/* Section */
+section{
+    padding:80px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+    color:#FF8FAB;
+    font-size:2rem;
+}
+
+/* Timeline */
+.timeline-item{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    max-width:1000px;
+    margin:50px auto;
+}
+
+.timeline-item.reverse{
+    flex-direction:row-reverse;
+}
+
+.timeline-item img{
+    width:50%;
+    border-radius:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,.1);
+}
+
+.timeline-text{
+    width:50%;
+}
+
+.timeline-text h3{
+    color:#FF8FAB;
+    margin-bottom:10px;
+}
+
+/* Gallery */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* Final */
+.final{
+    text-align:center;
+}
+
+.final img{
+    width:90%;
+    max-width:900px;
+    border-radius:25px;
+    margin-bottom:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.letter{
+    background:white;
+    max-width:800px;
+    margin:auto;
+    padding:30px;
+    border-radius:20px;
+    line-height:1.8;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:30px;
+    margin-top:60px;
+    background:#ffd6df;
+}
+
+/* Animation */
+.hidden{
+    opacity:0;
+    transform:translateY(50px);
+    transition:all .8s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.2rem;
+}
+
+.timeline-item,
+.timeline-item.reverse{
+    flex-direction:column;
+}
+
+.timeline-item img,
+.timeline-text{
+    width:100%;
+}
+
+nav{
+    flex-direction:column;
+    gap:10px;
+}
+
+.note-wrapper{
+    display:flex;
+    justify-content:center;
+    margin-top:40px;
+    margin-bottom:80px;
+    position:relative;
+}
+
+.pin{
+    width:18px;
+    height:18px;
+    background:#ff6b81;
+    border-radius:50%;
+    position:absolute;
+    top:-10px;
+    z-index:10;
+    box-shadow:0 3px 8px rgba(0,0,0,.2);
+}
+
+.sticky-note{
+    width:280px;
+    min-height:220px;
+    background:#FFF0A8;
+    padding:25px;
+    border-radius:8px;
+    cursor:pointer;
+    transform:rotate(-6deg);
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+    transition:.5s;
+    user-select:none;
+}
+
+.sticky-note:hover{
+    transform:rotate(-3deg) scale(1.05);
+}
+
+.sticky-note.open{
+    width:500px;
+    max-width:90%;
+    background:white;
+    transform:rotate(0deg) scale(1.02);
+}
+
+.opened-note{
+    display:none;
+    animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.opened-note p{
+    margin-top:15px;
+    line-height:1.8;
+}
+
+#transition{
+    position:fixed;
+    inset:0;
+    background:#FFF5F7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+
+    opacity:0;
+    visibility:hidden;
+    transition:.8s;
+}
+
+#transition.show{
+    opacity:1;
+    visibility:visible;
+}
+
+#transition h2{
+    color:#FF8FAB;
+    font-size:2rem;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        opacity:.4;
+        transform:scale(.95);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    100%{
+        opacity:.4;
+        transform:scale(.95);
+    }
+}
+
+.btn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:16px 38px;
+
+    border:none;
+    outline:none;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        135deg,
+        #FFB7C5,
+        #FF8FAB
+    );
+
+    color:white;
+    font-size:1rem;
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 20px rgba(255,143,171,.25),
+        0 2px 6px rgba(0,0,0,.08);
+
+    transition:all .3s ease;
+
+    overflow:hidden;
+}
+
+/* Efek cahaya */
+.btn::before{
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:60%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.4),
+        transparent
+    );
+
+    transition:.6s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 14px 28px rgba(255,143,171,.35),
+        0 4px 10px rgba(0,0,0,.08);
+}
+
+.btn:hover::before{
+    left:130%;
+}
+
+.btn:active{
+    transform:scale(.98);
+}
+
+.btn:focus{
+    outline:none;
+}
+
+
+.petal{
+    position:fixed;
+    top:-20px;
+    font-size:24px;
+
+    animation:
+    petalFall 3s linear forwards;
+
+    z-index:9999;
+}
+
+@keyframes petalFall{
+    to{
+        transform:
+        translateY(110vh)
+        rotate(360deg);
+
+        opacity:0;
+    }
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="hearts">
+    <div class="heart" style="left:10%;font-size:20px;">❤</div>
+    <div class="heart" style="left:30%;font-size:30px;">❤</div>
+    <div class="heart" style="left:60%;font-size:25px;">❤</div>
+    <div class="heart" style="left:80%;font-size:18px;">❤</div>
+</div>
+
+<nav>
+    <div class="logo">🌸 Eliz's Birthday</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#memories">Memories</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#message">Message</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Sebuah Cerita Kita</h1>
+        <p>
+            Setiap foto memiliki cerita.
+            Setiap kenangan memiliki tempatnya sendiri.
+        </p>
+
+        <button class="btn" onclick="startJourney()">
+            🌸 Mulai Membaca
+        </button>
+    </div>
+</section>
+
+<section id="memories">
+    <h2 class="section-title">Kenangan Kita</h2>
+    
+
+    <div class="timeline-item hidden">
+        <img src="/gambar-1.jpeg">
+        <div class="timeline-text">
+            <h3>Pertama Kali Mabar Sambil Call</h3>
+            <p>
+                Momen dimana kita pertama kali mabar roblox sambil call di discord tapi aku diem-diem record momen kita mabar karna ini adalah momen yang sangat spesial bagiku, dan kamu ngerasa akward karna this is your first time tapi momen ini bikin aku sangat happy karna bisa punya kesempatan untuk deket sama kamu.
+            </p>
+        </div>
+    </div>
+
+    <div class="timeline-item reverse hidden">
+        <img src="/gambar-2.jpg">
+        <div class="timeline-text">
+            <h3>Mulai Dekat</h3>
+            <p>
+                Momen dimana kita mulai sharing-sharing cerita tentang kepribadian kita, dan kamu juga mulai berani on cam saat call sama aku. Di titik itu hatiku rasanya berdebar saat lihat senyumanmu yang sangat lucu dan menggemaskan itu hehehehe.
+            </p>
+        </div>
+    </div>
+
+    <div class="timeline-item hidden">
+        <img src="/gambar-3.jpg">
+        <div class="timeline-text">
+            <h3>Momen Bahagia</h3>
+            <p>
+                Momen dimana kita sibuk ngurusin foto-foto buat yearbook, dan saat aku lagi rekamin kamu yang lagi tanda tangan, tanpa sadar ada yang fotoin kita disaat momen ini walaupun singkat tapi buatku kalo ada bersamamu semua jadi lebih berarti dan lebih mewarnai hidupku.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<section id="gallery">
+    <h2 class="section-title">Galeri</h2>
+
+    <div class="gallery hidden">
+        <img src="/gambar-4.jpg">
+        <img src="/gambar-5.jpg">
+        <img src="/gambar-6.jpg">
+        <img src="/gambar-7.jpg">
+        <img src="/gambar-8.png">
+        <img src="/gambar-9.jpg">
+        <img src="/gambar-10.png">
+        <img src="/gambar-11.png">
+        <img src="/gambar-12.jpg">
+        <img src="/gambar-13.jpg">
+    </div>
+</section>
+
+<section id="secret-note" class="hidden">
+    <h2 class="section-title">Satu Catatan Kecil</h2>
+
+    <div class="note-wrapper">
+
+        <div class="pin"></div>
+
+        <div class="sticky-note" onclick="toggleNote()">
+
+            <div id="closedNote">
+                <h3>📌 Catatan Rahasia</h3>
+                <p>Klik untuk membuka...</p>
+            </div>
+
+            <div id="openedNote" class="opened-note">
+                <h3>💌 Untukmu</h3>
+
+                <p>
+                Haii Elizz
+                Kalau kamu lagi baca note ini, berarti kamu udah nemu pesan rahasia yang aku sembunyiin hehehe.
+                </p>
+
+                <p>
+                    Aku cuma mau bilang terima kasih yaa, karena pernah hadir dan jadi bagian dari cerita yang indah di hidupku. Semoga di usia 18 ini kamu selalu sehat, bahagia, dan semua hal yang kamu perjuangin bisa berjalan dengan baik.
+                </p>
+
+                <p>
+                Tetap jadi Eliz yang aku kenal yaa, yang suka strawberry, suka nonton, suka main game, dan suka senyum lucu itu hehe.
+                </p>
+
+                <p>
+                Happy Birthday 🎂✨
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="final hidden" id="message">
+    <h2 class="section-title">For You</h2>
+
+    <img src="grad.jpg">
+
+    <div class="letter">
+        <p>
+            Haii Elizz, happy birthday🥳
+            Cieee udah 18 tahun ni yee. Semoga di usia baru ini kamu selalu diberi kesehatan, kebahagiaan, dan kelancaran buat semua hal yang lagi kamu perjuangin. Semoga kuliahnya nanti berjalan lancar dan semua planning yang udah kamu siapin bisa terwujud satu per satuu.
+            I'm very happy bisa lihat kamu bertumbuh sampai sejauh ini. Thankk youu yaa untuk semua cerita, tawa, dan waktu yang pernah kita lewatin bareng.
+        </p>
+
+        <br>
+
+        <p>
+            I know beberapa hari terakhir inii mungkin ga mudah buat kamu. Karena itu aku cuma berharap kamu bisa menjalani semuanya dengan tenang dan bahagia.
+            Thankk youu yaa karena pernah hadir di hidupku dan ngajarin banyak hal. Aku akan selalu mendoakan yang terbaik buat kamu dan keluargamu.
+            Enjoy your special day yaa, Don't forget to smile because just seeing your smile makes my heart melting hehehehe❤
+        </p>
+
+        <br>
+         
+        <p>
+            Happy Birthday, Eliz ❤
+        </p>
+
+        <br>
+
+        <strong>- Silves ❤️</strong>
+    </div>
+</section>
+
+<footer>
+    <p>Made with ❤️ by Silves</p>
+    <p>2026</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+});
+
+document.querySelectorAll('.hidden').forEach(el=>{
+observer.observe(el);
+});
+
+function toggleNote(){
+
+    const note = document.querySelector('.sticky-note');
+    const closed = document.getElementById('closedNote');
+    const opened = document.getElementById('openedNote');
+
+    note.classList.toggle('open');
+
+    if(note.classList.contains('open')){
+        closed.style.display = 'none';
+        opened.style.display = 'block';
+    }else{
+        closed.style.display = 'block';
+        opened.style.display = 'none';
+    }
+}
+
+function startJourney(){
+
+    const overlay =
+    document.getElementById("transition");
+
+    overlay.classList.add("show");
+
+    setTimeout(() => {
+
+        document
+        .getElementById("memories")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+        overlay.classList.remove("show");
+
+    },1200);
+
+    function sakuraBurst(){
+
+    for(let i=0;i<10;i++){
+
+        const petal =
+        document.createElement("div");
+
+        petal.innerHTML="🌸";
+
+        petal.className="petal";
+
+        petal.style.left =
+        Math.random()*100+"vw";
+
+        document.body.appendChild(petal);
+
+        setTimeout(()=>{
+            petal.remove();
+        },3000);
+    }
+}
+}
+</script>
+
+<div id="transition">
+    <h2>Membuka Kenangan...</h2>
+</div>
+
+</body>
+</html>
